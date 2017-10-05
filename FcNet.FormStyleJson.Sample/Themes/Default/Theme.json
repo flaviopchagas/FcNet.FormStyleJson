@@ -1,8 +1,12 @@
 ﻿{
   "Panel": {
-    "BorderStyle": "Fixed3D"
+    "BorderStyle": "None"
   },
-
+  "Button": {
+    "BackColor": "#000000",
+    "ForeColor": "#FFFFFF",
+    "MouseOverBackColor": "#357CA5"
+  },
   "pnlTitle": {
     "BackColor": "#3C8DBC",
     "ForeColor": "#000000",
@@ -23,7 +27,6 @@
     "BackColor": "#ECF0F5",
     "Dock": "Fill"
   },
-
   "btnOk,btnCancel": {
     "BackColor": "#000000",
     "ForeColor": "#FFFFFF",
