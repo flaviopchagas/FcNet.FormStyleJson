@@ -1,4 +1,8 @@
 ﻿{
+  "Panel": {
+    "BorderStyle": "Fixed3D"
+  },
+
   "pnlTitle": {
     "BackColor": "#3C8DBC",
     "ForeColor": "#000000",

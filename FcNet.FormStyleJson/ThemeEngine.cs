@@ -22,10 +22,7 @@ namespace FcNet.FormStyleJson
             SetControlTheme();
             SetElementTheme();
         }
-
-        private static  void Foo()
-        { }
-
+       
         private static void GetJson()
         {
             using (var json = new StreamReader(_themePath))
@@ -39,7 +36,7 @@ namespace FcNet.FormStyleJson
             foreach (var ctr in _controls)
             {
                 JToken obj = (from r in _jObject.ToObject<Dictionary<string, JToken>>()
-                              where r.Key.Contains(ctr.Name)
+                              where r.Key.Contains(ctr.GetType().Name)
                               select r.Value).FirstOrDefault();
 
                 if (obj != null) SetProperty(ctr, obj);
