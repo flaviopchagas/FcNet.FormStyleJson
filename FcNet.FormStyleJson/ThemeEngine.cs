@@ -23,6 +23,9 @@ namespace FcNet.FormStyleJson
             SetElementTheme();
         }
 
+        private static  void Foo()
+        { }
+
         private static void GetJson()
         {
             using (var json = new StreamReader(_themePath))
