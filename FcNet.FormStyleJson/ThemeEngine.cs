@@ -20,6 +20,7 @@ namespace FcNet.FormStyleJson
             _controls = GetAllControls(mainContainer);
             GetJson();
             SetControlTheme();
+            SetElementTheme();
         }
 
         private static void GetJson()
@@ -30,21 +31,28 @@ namespace FcNet.FormStyleJson
             }
         }
 
-        private static void SetControlTheme()
+        public static void SetControlTheme()
         {
-            foreach (Control ctr in _controls)
+            foreach (var ctr in _controls)
             {
-                SetControlTheme(ctr);
+                JToken obj = (from r in _jObject.ToObject<Dictionary<string, JToken>>()
+                              where r.Key.Contains(ctr.Name)
+                              select r.Value).FirstOrDefault();
+
+                if (obj != null) SetProperty(ctr, obj);
             }
         }
 
-        public static void SetControlTheme(Control ctr)
+        public static void SetElementTheme()
         {
-            JToken obj = (from r in _jObject.ToObject<Dictionary<string, JToken>>()
-                          where r.Key.Contains(ctr.Name)
-                          select r.Value).FirstOrDefault();
+            foreach (var ctr in _controls)
+            {
+                JToken obj = (from r in _jObject.ToObject<Dictionary<string, JToken>>()
+                              where r.Key.Contains(ctr.Name)
+                              select r.Value).FirstOrDefault();
 
-            if (obj != null) SetProperty(ctr, obj);
+                if (obj != null) SetProperty(ctr, obj);
+            }
         }
 
         private static void SetProperty(Control ctr, JToken token)
